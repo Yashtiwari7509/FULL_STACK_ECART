@@ -1,0 +1,125 @@
+.CheckOut {
+    padding-top: 5rem;
+    width: 100%;
+}
+
+.cart-name {
+    width: 100%;
+    display: flex;
+    color: aliceblue;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.102);
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border-bottom-left-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+    position: fixed;
+    z-index: 999;
+    mix-blend-mode: difference;
+}
+
+.cart-items {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    row-gap: 4rem;
+}
+
+
+.Cart-container {
+    color: rgba(240, 248, 255, 0.831);
+    position: relative;
+    width: 60vw;
+    background: linear-gradient(to bottom right, rgba(197, 197, 197, 0.529), rgba(255, 255, 255, 0));
+    border-top: 1px solid rgba(255, 255, 255, 0.339);
+    border-left: 1px solid rgba(255, 255, 255, 0.416);
+    padding: 1rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    gap: 1.2vw;
+    transition: all .2s ease-in-out;
+    backdrop-filter: blur(20px);
+    z-index: 1;
+    /* box-shadow: 4px 4px 15px rgb(63, 63, 63); */
+}
+
+.items-description {
+    /* flex-grow: 1; */
+}
+
+.count-handler {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .3rem;
+}
+
+.count-handler button {
+    padding: .5rem;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.count-handler input {
+    color: rgb(219, 219, 219);
+    width: 2rem;
+    text-align: center;
+    background: transparent;
+    border: 1px solid white;
+    padding: .3rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.navigation-billings {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: clamp(1.2rem, 2vw, 2.1vw);
+    gap: 2vw;
+    color: white;
+    height: 20vh;
+    background-color: rgba(255, 255, 255, 0.156);
+    backdrop-filter: blur(10px);
+
+}
+
+.navigation-billings .bill {
+    padding: .2rem 1rem;
+    border-radius: 1rem;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: 4vw;
+}
+
+.nav-button button {
+    border: 1px solid white;
+    color: white;
+    padding: .2rem 1rem;
+    border-radius: 1rem;
+    background-color: transparent;
+    width: 15rem;
+    height: 3rem;
+
+}

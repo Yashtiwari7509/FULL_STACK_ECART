@@ -1,0 +1,49 @@
+.card-parent {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 10rem 0;
+    align-items: center;
+    gap: 3rem;
+}
+
+.data-pur {
+    color: rgba(240, 248, 255, 0.831);
+    position: relative;
+    width: 50rem;
+    background: linear-gradient(to bottom right, rgba(197, 197, 197, 0.529), rgba(255, 255, 255, 0));
+    border-top: 1px solid rgba(255, 255, 255, 0.339);
+    border-left: 1px solid rgba(255, 255, 255, 0.416);
+    padding: 1rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    gap: 1vw;
+    transition: all .2s ease-in-out;
+    backdrop-filter: blur(20px);
+    z-index: 1;
+    /* box-shadow: 4px 4px 15px rgb(63, 63, 63); */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+@media (max-width : 850px) {
+    .data-pur {
+        width: 50%;
+        flex-direction: row;
+        flex-direction: column;
+    }
+}
+
+@media (max-width : 650px) {
+    .data-pur {
+        width: 80%;
+        flex-direction: row;
+        flex-direction: column;
+    }
+}
