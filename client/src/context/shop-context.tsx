@@ -3,31 +3,33 @@ import useGetProduct from "../hooks/useGetProduct";
 import { Iproduct } from "../models/interface";
 import axios from "axios";
 import useGetToken from "../hooks/useGetToken";
-const link = process.env.REACT_APP_API_URL;
 
 interface Profile {
     availableMoney : number ,
     username : string
 }
+const defaultProfile: Profile = {
+  availableMoney: 0,
+  username: "",
+};
 export interface IshopContext {
-    addToCart: (itemId: string) => void;
-    removeFromCart: (itemId: string) => void;
-    UpdateCartCount: (itemId: string, newCount: number) => void;
-    getitemCount: (itemid: string) => number;
-    getTotalAmount: () => number;
-    checkout: () => void;
-    profile : Profile
-
+  addToCart: (itemId: string) => void;
+  removeFromCart: (itemId: string) => void;
+  UpdateCartCount: (itemId: string, newCount: number) => void;
+  getitemCount: (itemid: string) => number;
+  getTotalAmount: () => number;
+  checkout: () => void;
+  profile: Profile;
 }
 
 const defaultVal: IshopContext = {
-    addToCart: () => null,
-    removeFromCart: () => null,
-    UpdateCartCount: () => null,
-    getitemCount: () => 0,
-    getTotalAmount: () => 0,
-    checkout: () => null,
-    profile : null
+  addToCart: () => null,
+  removeFromCart: () => null,
+  UpdateCartCount: () => null,
+  getitemCount: () => 0,
+  getTotalAmount: () => 0,
+  checkout: () => null,
+  profile: defaultProfile
 };
 
 export const ShopContext = createContext(defaultVal)
@@ -45,7 +47,11 @@ export const ShopContextProvider = (props: any) => {
         const body = {xid}
         
         try {
-            const fetched = await axios.post(`${link}/profile`, body,{headers});
+            const fetched = await axios.post(
+              `https://full-stack-ecart.onrender.com/profile`,
+              body,
+              { headers }
+            );
             const Profiledata = fetched.data;
             // console.log(Profiledata);
             setProfile(Profiledata)
@@ -92,7 +98,7 @@ export const ShopContextProvider = (props: any) => {
         let totalAmount = 0;
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
-                let ItemsInfo: Iproduct = products.find((product) => product._id === item);
+                let ItemsInfo: any = products.find((product) => product._id === item);
                 totalAmount += cartItems[item] * ItemsInfo.price;
             }
         }
@@ -101,9 +107,13 @@ export const ShopContextProvider = (props: any) => {
     const checkout = async () => {
         const body = { customerID: localStorage.getItem('userID'), cartItems }
         try {
-            const Result = await axios.post('http://localhost:3001/product/checkout', body, {
-                headers
-            })
+            const Result = await axios.post(
+              "https://full-stack-ecart.onrender.com/product/checkout",
+              body,
+              {
+                headers,
+              }
+            );
             // fetchAvailableMoney()
             setCartItems({}) ;
             Profile() ;

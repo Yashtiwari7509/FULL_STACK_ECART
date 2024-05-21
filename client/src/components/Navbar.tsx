@@ -7,6 +7,7 @@ import { IshopContext, ShopContext } from "../context/shop-context";
 
 function Navbar() {
   const [isloggedIn, setLoggedIn] = useState(false);
+  const [Nav, SetNav] = useState(true);
   const [cookie, , removeCookie] = useCookies();
   const navigate = useNavigate();
   const { profile } = useContext<IshopContext>(ShopContext);
@@ -39,73 +40,67 @@ function Navbar() {
       <div className="Nav-logo">
         <h1 style={{ fontFamily: "Monoton", fontWeight: "100" }}>Y-SHOPIFY</h1>
       </div>
-      <div className="Nav-Links">
-        <NavLink
-          to="/"
-          style={({ isActive }) => {
-            return {
-              textDecoration: "none",
-              color: isActive ? "white" : "grey",
-            };
-          }}
-        >
-          Shop
-        </NavLink>
-        <NavLink
-          to="/perchased-items"
-          style={({ isActive }) => {
-            return {
-              textDecoration: "none",
-              color: isActive ? "white" : "grey",
-            };
-          }}
-        >
-          Purchases
-        </NavLink>
-        <NavLink
-          to="/checkout"
-          style={({ isActive }) => {
-            return {
-              textDecoration: "none",
-              color: isActive ? "white" : "grey",
-            };
-          }}
-        >
-          Cart
-        </NavLink>
-        {isloggedIn ? (
-          <div className="user-money">
-            <div className="username">{username} </div> <p>${money}</p>
-          </div>
-        ) : (
+      {Nav ? (
+        <div className="Nav-Links">
           <NavLink
-            to="/auth"
+            to="/"
             style={({ isActive }) => {
               return {
                 textDecoration: "none",
-                color: isActive ? "white" : "grey",
+                color: isActive ? "white" : "aqua",
               };
             }}
           >
-            Register
+            Shop
           </NavLink>
-        )}
-        {isloggedIn && <button onClick={Logout}>Logout</button>}
-      </div>
+          <NavLink
+            to="/purchased-items"
+            style={({ isActive }) => {
+              return {
+                textDecoration: "none",
+                color: isActive ? "white" : "aqua",
+              };
+            }}
+          >
+            Purchases
+          </NavLink>
+          <NavLink
+            to="/checkout"
+            style={({ isActive }) => {
+              return {
+                textDecoration: "none",
+                color: isActive ? "white" : "aqua",
+              };
+            }}
+          >
+            Cart
+          </NavLink>
+          {isloggedIn ? (
+            <div className="user-money">
+              <div className="username">{username} </div>{" "}
+              <p className="money">${money}</p>
+            </div>
+          ) : (
+            <NavLink
+              to="/auth"
+              style={({ isActive }) => {
+                return {
+                  textDecoration: "none",
+                  color: isActive ? "white" : "aqua",
+                };
+              }}
+            >
+              Register
+            </NavLink>
+          )}
+          {isloggedIn && <button onClick={Logout}>Logout</button>}
+        </div>
+      ) : (
+        <></>
+      )}
+      <div className="Menu" onClick={() => SetNav((prev) => !prev)}></div>
     </div>
   );
 }
-const linkStyle = {
-  textDecoration: "none", // Remove default underline
-  color: "white", // Set text color
-  fontWeight: 100,
-  fontSize: "1rem",
-};
-const linkStyleActive = {
-  textDecoration: "none", // Remove default underline
-  color: "red", // Set text color
-  fontWeight: 600,
-  fontSize: "1rem",
-};
 
 export default Navbar;

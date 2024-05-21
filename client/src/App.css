@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Nav-bar {
+  width: 100vw;
+  height: 4vw;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 2rem 4vw;
+  backdrop-filter: blur(40px);
+  position: fixed;
+  z-index: 999;
+}
+.Nav-Links {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.user-money {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  background: rgba(29, 223, 210, 0.572);
+  padding: 3px 0.5rem;
+  color: white;
+  border-radius: 2rem;
+  gap: 1vw;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.user-money .money {
+  background: black;
+  border-radius: 1.5rem;
+  padding: 3px 1rem;
+}
+.Nav-Links button {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  background: rgba(29, 223, 210, 0.572);
+  padding: 3px 0.5rem;
+  color: white;
+  border-radius: 2rem;
+  border: none;
+}
+.Menu {
+  display: none;
+  width: 3rem;
+  height: 3rem;
+}
+@media (max-width: 1000px) {
+  .Nav-Links {
+    position: absolute;
+    flex-direction: column;
+    width: 40vh;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    gap: 5vh;
+    background-color: rgba(0, 39, 136, 0.8);
+    z-index: 999;
+    padding: 15vw 2vw;
+    transition: all 0.5s ease-in-out;
   }
-  to {
-    transform: rotate(360deg);
+  .Menu {
+    position: relative;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    z-index: 1000;
+    transition: all 0.5s ease-in-out;
+  }
+  .Menu::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    background: rgb(255, 255, 255);
+    top: 40%;
+    transition: all 0.5s ease-in-out;
+  }
+  .Menu::before {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    background: rgb(255, 255, 255);
+    top: 60%;
+    transition: all 0.5s ease-in-out;
+  }
+  .user-money {
+    flex-direction: column;
+    border-radius: 0.4rem;
+  }
+  .Nav-Links button {
+    display: block;
   }
 }

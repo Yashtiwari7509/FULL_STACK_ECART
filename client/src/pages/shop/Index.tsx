@@ -1,18 +1,18 @@
-import useGetProduct from '../../hooks/useGetProduct'
-import ProductCards from '../../components/ProductCards'
-import './style.css'
+import useGetProduct from "../../hooks/useGetProduct";
+import ProductCards from "../../components/ProductCards";
+import "./style.css";
 const ShopPage = () => {
-  const { products } = useGetProduct()
+  const { products } = useGetProduct();
 
   return (
-    <div className='shop'>
+    <div className="shop">
       <div className="products">
-        {products.map((product , key)=>(
-          <ProductCards key={key} products = {product} />
+        {products.map((product, key) => (
+          <ProductCards key={key} products={product} />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ShopPage
+export default ShopPage;

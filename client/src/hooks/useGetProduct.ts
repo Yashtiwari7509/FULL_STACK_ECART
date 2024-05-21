@@ -6,13 +6,15 @@ import { Iproduct } from "../models/interface";
 const useGetProduct = () => {
   const [products, setProducts] = useState<Iproduct[]>([]);
   const { headers } = useGetToken();
-  const link = process.env.REACT_APP_API_URL;
 
   const fetctProducts = async () => {
     try {
-      const fetchedProducts = await axios.get(`${link}/product`, {
-        headers,
-      });
+      const fetchedProducts = await axios.get(
+        `https://full-stack-ecart.onrender.com/product`,
+        {
+          headers,
+        }
+      );
 
       setProducts(fetchedProducts.data);
     } catch (error: any) {

@@ -24,9 +24,9 @@ const Register = () => {
   const handleSubmit = async (event: SyntheticEvent) => {
     event?.preventDefault()
     try {
-      await axios.post('http://localhost:3001/user/register', {
+      await axios.post("https://full-stack-ecart.onrender.com/user/register", {
         username,
-        password
+        password,
       });
       setPassword('')
       setUsername('')
@@ -64,10 +64,13 @@ const Login = () => {
   const handleSubmit = async (event: SyntheticEvent) => {
     event?.preventDefault()
     try {
-      const result = await axios.post('http://localhost:3001/user/login', {
-        username,
-        password
-      });
+      const result = await axios.post(
+        "https://full-stack-ecart.onrender.com/user/login",
+        {
+          username,
+          password,
+        }
+      );
       setCookies('accessToken', result.data.token)
       localStorage.setItem('userID', result.data.userId)
       setPassword('')
