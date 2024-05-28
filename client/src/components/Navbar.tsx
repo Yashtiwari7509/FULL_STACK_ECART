@@ -7,7 +7,7 @@ import { IshopContext, ShopContext } from "../context/shop-context";
 
 function Navbar() {
   const [isloggedIn, setLoggedIn] = useState(false);
-  const [Nav, SetNav] = useState(true);
+  const [Nav, SetNav] = useState(window.innerWidth > 1000 ? true : false);
   const [cookie, , removeCookie] = useCookies();
   const navigate = useNavigate();
   const { profile } = useContext<IshopContext>(ShopContext);
@@ -27,18 +27,26 @@ function Navbar() {
     Setter();
   }, []);
 
-  const Style = {};
   const Logout = () => {
     removeCookie("accessToken");
     localStorage.clear();
     navigate("/auth");
     window.location.reload();
   };
+  const NavSetter = () => {
+    if (window.innerWidth < 1000) {
+      SetNav(false);
+    }
+  };
 
   return (
     <div className="Nav-bar">
       <div className="Nav-logo">
-        <h1 style={{ fontFamily: "Monoton", fontWeight: "100" }}>Y-SHOPIFY</h1>
+        <h1
+          style={{ fontFamily: "Monoton", fontWeight: "100", color: "white" }}
+        >
+          StorePik
+        </h1>
       </div>
       {Nav ? (
         <div className="Nav-Links">
@@ -50,6 +58,7 @@ function Navbar() {
                 color: isActive ? "white" : "aqua",
               };
             }}
+            onClick={NavSetter}
           >
             Shop
           </NavLink>
@@ -61,6 +70,7 @@ function Navbar() {
                 color: isActive ? "white" : "aqua",
               };
             }}
+            onClick={NavSetter}
           >
             Purchases
           </NavLink>
@@ -72,6 +82,7 @@ function Navbar() {
                 color: isActive ? "white" : "aqua",
               };
             }}
+            onClick={NavSetter}
           >
             Cart
           </NavLink>
@@ -89,6 +100,7 @@ function Navbar() {
                   color: isActive ? "white" : "aqua",
                 };
               }}
+              onClick={NavSetter}
             >
               Register
             </NavLink>
@@ -98,7 +110,10 @@ function Navbar() {
       ) : (
         <></>
       )}
-      <div className="Menu" onClick={() => SetNav((prev) => !prev)}></div>
+      <div
+        className={`nav-icon ${Nav && "click"}`}
+        onClick={() => SetNav((prev) => !prev)}
+      ></div>
     </div>
   );
 }

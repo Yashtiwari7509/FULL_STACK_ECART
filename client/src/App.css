@@ -1,3 +1,36 @@
+.container {
+  padding: 10vw;
+  text-align: center;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.container h1 {
+  font-size: 6rem;
+  color: #6bf8ff;
+}
+
+.container p {
+  font-size: 1.5rem;
+  color: #00a1a4;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  background-color: #6bfdff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.home-button:hover {
+  background-color: #47b5ff;
+}
+
 .Nav-bar {
   width: 100vw;
   height: 4vw;
@@ -7,7 +40,7 @@
   padding: 2rem 4vw;
   backdrop-filter: blur(40px);
   position: fixed;
-  z-index: 999;
+  z-index: 2000;
 }
 .Nav-Links {
   display: flex;
@@ -41,10 +74,8 @@
   border-radius: 2rem;
   border: none;
 }
-.Menu {
+.nav-icon {
   display: none;
-  width: 3rem;
-  height: 3rem;
 }
 @media (max-width: 1000px) {
   .Nav-Links {
@@ -56,36 +87,48 @@
     right: 0;
     gap: 5vh;
     background-color: rgba(0, 39, 136, 0.8);
-    z-index: 999;
+    z-index: 2000;
     padding: 15vw 2vw;
     transition: all 0.5s ease-in-out;
   }
-  .Menu {
+  .nav-icon {
+    display: flex;
     position: relative;
-    display: block;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    z-index: 1000;
-    transition: all 0.5s ease-in-out;
+    width: 3rem;
+    height: 3rem;
+    transition: all 0.3s;
+    z-index: 2001;
   }
-  .Menu::after {
+  .nav-icon::after {
     content: "";
     position: absolute;
     width: 80%;
     height: 2px;
-    background: rgb(255, 255, 255);
+    background-color: #ffffff;
     top: 40%;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s;
+    transform-origin: center;
   }
-  .Menu::before {
+  .nav-icon.click::after {
+    top: 40%;
+    transform: rotate(45deg);
+    transition: all 0.3s;
+    top: 50%;
+  }
+  .nav-icon::before {
     content: "";
     position: absolute;
     width: 60%;
     height: 2px;
-    background: rgb(255, 255, 255);
-    top: 60%;
-    transition: all 0.5s ease-in-out;
+    top: 55%;
+    background-color: #ffffff;
+    transition: all 0.3s;
+    transform-origin: center;
+  }
+  .nav-icon.click::before {
+    width: 80%;
+    top: 50%;
+    transform: rotate(-45deg);
   }
   .user-money {
     flex-direction: column;

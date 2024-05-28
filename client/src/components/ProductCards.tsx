@@ -17,7 +17,7 @@ const ProductCards = (props: Idata) => {
             <div className='img-con'><img src={imageURL} alt="" /></div>
             <div className='product-name'>{productName}</div>
             <div className='Describe'>{description}</div>
-            <div className='price-container'><h4>Price <span style={{ color: 'greenyellow' }}>${price}</span></h4><h4>{stockQuantity === 0 ? <h4 style={{ color: 'red' }}>Out Of Stock</h4> : <h4 style={{ background: 'green', borderRadius: ".7rem", padding: '.3rem .4rem' }}>In Stock</h4>}</h4></div>
+            <div className='price-container'><div>Price <span style={{ color: 'greenyellow' }}>${price}</span></div><div>{stockQuantity === 0 ? <h4 style={{ color: 'red' }}>Out Of Stock</h4> : <h4 style={{ background: 'green', borderRadius: ".7rem", padding: '.3rem .4rem' }}>In Stock</h4>}</div></div>
             <button onClick={() => addToCart(_id)}>add to cart:{count > 0 && <>{count}</>}</button>
         </div>
     )

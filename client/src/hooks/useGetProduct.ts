@@ -5,6 +5,7 @@ import { Iproduct } from "../models/interface";
 
 const useGetProduct = () => {
   const [products, setProducts] = useState<Iproduct[]>([]);
+  const [laoder, setLoader] = useState(false);
   const { headers } = useGetToken();
 
   const fetctProducts = async () => {
@@ -15,6 +16,7 @@ const useGetProduct = () => {
           headers,
         }
       );
+      setLoader(true);
 
       setProducts(fetchedProducts.data);
     } catch (error: any) {
@@ -25,7 +27,7 @@ const useGetProduct = () => {
   useEffect(() => {
     fetctProducts();
   }, []);
-  return { products };
+  return { products, laoder };
 };
 
 export default useGetProduct;

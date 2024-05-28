@@ -1,41 +1,44 @@
 /* cards */
 .shop {
-    width: 100vw;
-    background: linear-gradient(to left, rgb(0, 19, 59), rgb(0, 40, 171));
-
+  width: 100vw;
+  background: linear-gradient(to left, rgb(0, 19, 59), rgb(0, 40, 171));
 }
 
 .products {
-    padding: 2vw 2vw;
-    padding-top: 8rem;
-    width: 100vw;
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    /* Adjust minmax() values as needed */
-    row-gap: 2rem;
-    column-gap: 2vw;
-    place-items: center;
+  padding: 2vw 2vw;
+  padding-top: 8rem;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  /* Adjust minmax() values as needed */
+  row-gap: 2rem;
+  column-gap: 2vw;
+  place-items: center;
 }
 
 .data {
-    color: rgba(240, 248, 255, 0.831);
-    position: relative;
-    width: 20rem;
-    background: linear-gradient(to bottom right, rgba(197, 197, 197, 0.529), rgba(255, 255, 255, 0));
-    border-top: 1px solid rgba(255, 255, 255, 0.339);
-    border-left: 1px solid rgba(255, 255, 255, 0.416);
-    padding: 1rem 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 1rem;
-    gap: 1.2vw;
-    transition: all .2s ease-in-out;
-    backdrop-filter: blur(20px);
-    z-index: 1;
-    /* box-shadow: 4px 4px 15px rgb(63, 63, 63); */
+  color: rgba(240, 248, 255, 0.831);
+  position: relative;
+  width: 20rem;
+  background: linear-gradient(
+    to bottom right,
+    rgba(197, 197, 197, 0.529),
+    rgba(255, 255, 255, 0)
+  );
+  border-top: 1px solid rgba(255, 255, 255, 0.339);
+  border-left: 1px solid rgba(255, 255, 255, 0.416);
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  gap: 1.2vw;
+  transition: all 0.2s ease-in-out;
+  backdrop-filter: blur(20px);
+  z-index: 1;
+  /* box-shadow: 4px 4px 15px rgb(63, 63, 63); */
 }
 
 /* .data::after {
@@ -65,70 +68,143 @@
 } */
 
 .data:hover {
-    background-color: rgb(64, 56, 73);
-    transform: perspective(100px) translateZ(2px);
+  background-color: rgb(64, 56, 73);
+  transform: perspective(100px) translateZ(2px);
 }
 
 .price-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .img-con {
-    width: 100%;
-    aspect-ratio: 1/1;
-    overflow: hidden;
-    border-radius: .4rem;
-    transition: all .2s ease-in-out;
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .data:hover .img-con {
-    transform: perspective(100px) translateZ(-5px);
+  transform: perspective(100px) translateZ(-5px);
 }
 
 img {
-    position: relative;
-    width: 100%;
-    background-position: center;
-    background-size: contain;
-    aspect-ratio: 1/1;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: all .1s ease-in-out;
+  position: relative;
+  width: 100%;
+  background-position: center;
+  background-size: contain;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.1s ease-in-out;
 }
 
-
 .product-name {
-    width: 100%;
-    text-align: start;
-    color: wheat;
+  width: 100%;
+  text-align: start;
+  color: wheat;
 }
 
 .Describe {
-    position: relative;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-    word-wrap: break-word;
+  position: relative;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  word-wrap: break-word;
 }
 
 .shop button {
-    align-self: flex-start;
-    width: 100%;
-    padding: .6vw;
-    border: none;
-    border-radius: 1rem;
-    text-transform: capitalize;
-    transition: all .1s ease-in-out;
-    font-weight: 600;
+  align-self: flex-start;
+  width: 100%;
+  padding: 1vw;
+  border: none;
+  border-radius: 1rem;
+  text-transform: capitalize;
+  transition: all 0.1s ease-in-out;
+  font-weight: 600;
 }
 
 .shop button:hover {
-    background-color: blanchedalmond;
-    scale: 1.0555;
+  background-color: blanchedalmond;
+  scale: 1.0555;
+}
+.Loader-con {
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.ip {
+  width: 16em;
+  height: 8em;
+}
+.ip__track {
+  stroke: hsl(var(--hue), 90%, 90%);
+  transition: stroke var(--trans-dur);
+}
+.ip__worm1,
+.ip__worm2 {
+  animation: worm1 2s linear infinite;
+}
+.ip__worm2 {
+  animation-name: worm2;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: hsl(var(--hue), 90%, 5%);
+    --fg: hsl(var(--hue), 90%, 95%);
+  }
+  .ip__track {
+    stroke: hsl(var(--hue), 90%, 15%);
+  }
+}
+
+/* Animation */
+@keyframes worm1 {
+  from {
+    stroke-dashoffset: 0;
+  }
+  50% {
+    animation-timing-function: steps(1);
+    stroke-dashoffset: -358;
+  }
+  50.01% {
+    animation-timing-function: linear;
+    stroke-dashoffset: 358;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes worm2 {
+  from {
+    stroke-dashoffset: 358;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -358;
+  }
+}
+
+@media (max-width: 1000px) {
+  .data {
+    gap: 3vw;
+  }
+  .shop button {
+    align-self: flex-start;
+    width: 100%;
+    padding: 2vw;
+    font-weight: 600;
+  }
 }

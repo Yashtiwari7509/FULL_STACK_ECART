@@ -1,16 +1,17 @@
 import axios from "axios";
 import useGetToken from "../../hooks/useGetToken";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import CartItems from "./Carditems";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 import { Iproduct } from "../../models/interface";
+
 const PerchasePage = () => {
   const [purchased, setPurchased] = useState<any>([]);
   const { headers } = useGetToken();
   const navigate = useNavigate();
 
-  const fetchPerchase = async () => {
+  const fetchPerchase = useCallback(async () => {
     const id = localStorage.getItem("userID");
     try {
       const purchasedItems = await axios.get(
@@ -20,17 +21,18 @@ const PerchasePage = () => {
         }
       );
       const data = purchasedItems.data;
-      console.log(data);
+      console.log("hello");
 
       setPurchased(data);
     } catch (error) {
-      navigate("/auth");
       console.log(error);
+      navigate("/auth");
     }
-  };
+  }, [headers, navigate]);
+
   useEffect(() => {
     fetchPerchase();
-  }, []);
+  }, [fetchPerchase]);
 
   return (
     <div className="card-parent">
